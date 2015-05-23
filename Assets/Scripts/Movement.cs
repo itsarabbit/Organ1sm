@@ -35,8 +35,10 @@ public class Movement : MonoBehaviour {
 	    var offset = new Vector2(Input.mousePosition.x - screenPosition.x, Input.mousePosition.y - screenPosition.y);
 	    var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
 
-        transform.localRotation = Quaternion.Euler(0, 0, angle);
-        //stransform.rotation = Quaternion.FromToRotation(transform.localPosition, Input.);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+
+	    var length = Mathf.Sqrt(Mathf.Pow(transform.position.x, 2) + Mathf.Pow(transform.position.y, 2));
+	    //stransform.rotation = Quaternion.FromToRotation(transform.localPosition, Input.);
 	    //transform.TransformDirection(transform.position.x - Input.mousePosition.x, transform.position.y - Input.mousePosition.y, 0);
     }
 
