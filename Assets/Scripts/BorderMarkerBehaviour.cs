@@ -16,7 +16,7 @@ public class BorderMarkerBehaviour : MonoBehaviour
 	void Update ()
 	{
 	    Time += UnityEngine.Time.deltaTime;
-        transform.position = new Vector3(Mathf.Cos(Time) * (GlobalVars.WorldRadius + LengthOffset), 
-            Mathf.Sin(Time) * (GlobalVars.WorldRadius + LengthOffset), transform.position.z);
+        transform.position = new Vector3(Mathf.Cos(Time) * (GlobalVars.WorldRadius + LengthOffset) + Mathf.Sin(Time * 10) *0.1f,
+            Mathf.Sin(Time) * (GlobalVars.WorldRadius + LengthOffset) + Mathf.Cos(Time * 10) * 0.25f, transform.position.z);
 	}
 }
