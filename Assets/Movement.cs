@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 public class Movement : MonoBehaviour {
@@ -30,8 +31,13 @@ public class Movement : MonoBehaviour {
         {
             rigidbody.velocity += new Vector2(0, -Speed * Time.deltaTime);
         }
+	    var screenPosition = Camera.main.WorldToScreenPoint(transform.localPosition);
+	    var offset = new Vector2(Input.mousePosition.x - screenPosition.x, Input.mousePosition.y - screenPosition.y);
+	    var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
 
-        transform.rotation.SetFromToRotation(new Vector2(transform.position.x, transform.position.y), Input.mousePosition);
+        transform.localRotation = Quaternion.Euler(0, 0, angle);
+        //stransform.rotation = Quaternion.FromToRotation(transform.localPosition, Input.);
+	    //transform.TransformDirection(transform.position.x - Input.mousePosition.x, transform.position.y - Input.mousePosition.y, 0);
     }
 
     void FixedUpdate()
