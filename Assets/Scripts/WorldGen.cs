@@ -5,11 +5,13 @@ using System.Collections;
 public class WorldGen : MonoBehaviour
 {
 
-    public int BorderMarkerCount;
+    int BorderMarkerCount = 1;
     public GameObject BorderMarker;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
+	    BorderMarkerCount = (int)(GlobalVars.WorldRadius * 1.3f);
         CreateBorderMarkers();
 	}
 	
@@ -25,7 +27,23 @@ public class WorldGen : MonoBehaviour
             var o = Instantiate(BorderMarker, Vector3.zero, Quaternion.identity);
             ((GameObject)o).GetComponent<BorderMarkerBehaviour>().Time = Mathf.PI * 2 / BorderMarkerCount * i;
             ((GameObject) o).GetComponent<BorderMarkerBehaviour>().LengthOffset = 0.5f;
-            Debug.Log("Created Border Marker");
+            Debug.Log("Created Border Marker nr. " + i);
+        }
+
+        for (int i = 0; i < BorderMarkerCount; i++)
+        {
+            var o = Instantiate(BorderMarker, Vector3.zero, Quaternion.identity);
+            ((GameObject)o).GetComponent<BorderMarkerBehaviour>().Time = Mathf.PI * 2 / BorderMarkerCount * i + 0.33f;
+            ((GameObject)o).GetComponent<BorderMarkerBehaviour>().LengthOffset = 2f;
+            Debug.Log("Created Border Marker nr. " + i);
+        }
+
+        for (int i = 0; i < BorderMarkerCount; i++)
+        {
+            var o = Instantiate(BorderMarker, Vector3.zero, Quaternion.identity);
+            ((GameObject)o).GetComponent<BorderMarkerBehaviour>().Time = Mathf.PI * 2 / BorderMarkerCount * i + 0.66f;
+            ((GameObject)o).GetComponent<BorderMarkerBehaviour>().LengthOffset = 3f;
+            Debug.Log("Created Border Marker nr. " + i);
         }
     }
 }
